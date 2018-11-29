@@ -22,18 +22,44 @@ public class CourseDAOImpl implements CourseDAO {
     private DbConnection db=new DbConnection(); 
 
     @Override
-    public int insert(Course t) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int insert(Course course) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT into tbl_courses(course_name,course_fees,status)"
+                + "VALUES(?,?,?)";
+        db.connect();
+        PreparedStatement stmt = db.initStatement(sql);
+        stmt.setString(1, course.getName());
+        stmt.setInt(2, course.getFees());
+        stmt.setBoolean(3, course.isStatus());
+        int result = db.Update();
+        db.close();
+        return result;
     }
 
     @Override
-    public int update(Course t) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int update(Course course) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE tbl_courses set course_name=?, course_fees=?,status=? "
+                + "WHERE course_id= ?";
+        db.connect();
+        PreparedStatement stmt = db.initStatement(sql);
+        stmt.setString(1, course.getName());
+        stmt.setInt(2, course.getFees());
+        stmt.setBoolean(3, course.isStatus());
+        stmt.setInt(4, course.getId());
+        int result = db.Update();
+        db.close();
+        return result;
     }
 
     @Override
     public int delete(int id) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE from tbl_courses WHERE course_id=?";
+        db.connect();
+        PreparedStatement stmt = db.initStatement(sql);
+
+        stmt.setInt(1, id);
+        int result = db.Update();
+        db.close();
+        return result;
     }
 
     @Override
@@ -73,8 +99,6 @@ public class CourseDAOImpl implements CourseDAO {
         c.setFees(rs.getInt("course_fees"));
         c.setAdded_date(rs.getDate("added_date"));
         c.setStatus(rs.getBoolean("status"));
-        
-         
         }
         db.close();
         return c;

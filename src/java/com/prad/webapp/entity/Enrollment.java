@@ -12,6 +12,7 @@ import java.util.Date;
  * @author conne
  */
 public class Enrollment {
+
     private int id;
     private Course course;
     private Student student;
@@ -20,9 +21,12 @@ public class Enrollment {
     private Date enrollDate;
     private int remaining;
     private String status;
-    
 
     public Enrollment() {
+    }
+
+    public Enrollment(int id) {
+        this.id = id;
     }
 
     public Enrollment(int id, Course course, Student student, int fees, int discount, String status) {
@@ -97,6 +101,5 @@ public class Enrollment {
     public void setRemaining(int remaining) {
         this.remaining = remaining;
     }
-    
-    
+
 }

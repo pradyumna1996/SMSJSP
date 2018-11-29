@@ -23,18 +23,48 @@ public class StudentDAOImpl implements StudentDAO {
     private DbConnection db = new DbConnection();
 
     @Override
-    public int insert(Student t) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int insert(Student student) throws SQLException, ClassNotFoundException {
+         String sql = "INSERT into tbl_students(first_name,last_name,email,contact_no,status)"
+                + "VALUES(?,?,?,?,?)";
+        db.connect();
+        PreparedStatement stmt = db.initStatement(sql);
+        stmt.setString(1, student.getFirstName() );
+        stmt.setString(2, student.getLastName() );
+        stmt.setString(3,student.getEmail() );
+        stmt.setString(4,student.getContactNo());
+        stmt.setBoolean(5, student.isStatus());
+        int result = db.Update();
+        db.close();
+        return result;
     }
 
     @Override
-    public int update(Student t) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int update(Student student) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE tbl_students set first_name=?,last_name=?,email=?,contact_no=?,status=?"
+                + " where student_id= ?";
+        db.connect();
+        PreparedStatement stmt = db.initStatement(sql);
+        stmt.setString(1, student.getFirstName());
+        stmt.setString(2, student.getLastName());
+        stmt.setString(3, student.getEmail());
+        stmt.setString(4, student.getContactNo());
+        stmt.setBoolean(5, student.isStatus());
+        stmt.setInt(6, student.getId());
+        int result = db.Update();
+        db.close();
+        return result;
     }
 
     @Override
     public int delete(int id) throws SQLException, ClassNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE from tbl_students WHERE student_id=?";
+        db.connect();
+        PreparedStatement stmt = db.initStatement(sql);
+
+        stmt.setInt(1, id);
+        int result = db.Update();
+        db.close();
+        return result;
     }
 
     @Override
@@ -46,14 +76,15 @@ public class StudentDAOImpl implements StudentDAO {
         PreparedStatement stmt = db.initStatement(sql);
         ResultSet rs = db.query();
         while (rs.next()) {
-            Student c = new Student();
-            c.setId(rs.getInt("student_id"));
-            c.setFirstName(rs.getString("first_name"));
-            c.setLastName(rs.getString("last_name"));
-            c.setEmail(rs.getString("email"));
-            c.setAddedDate(rs.getDate("added_date"));
-            c.setStatus(rs.getBoolean("status"));
-            studentList.add(c);
+            Student s = new Student();
+            s.setId(rs.getInt("student_id"));
+            s.setFirstName(rs.getString("first_name"));
+            s.setLastName(rs.getString("last_name"));
+            s.setEmail(rs.getString("email"));
+            s.setContactNo(rs.getString("contact_no"));
+            s.setAddedDate(rs.getDate("added_date"));
+            s.setStatus(rs.getBoolean("status"));
+            studentList.add(s);
 
         }
         db.close();
@@ -62,24 +93,24 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public Student getById(int id) throws SQLException, ClassNotFoundException {
-        Student c = null;
-        String sql = "SELECT * FROM tbl_courses where student_id=?";
+        Student s = null;
+        String sql = "SELECT * FROM tbl_students where student_id=?";
         db.connect();
         PreparedStatement stmt = db.initStatement(sql);
         stmt.setInt(1, id);
         ResultSet rs = db.query();
         if (rs.next()) {
-            c = new Student();
-            c.setId(rs.getInt("student_id"));
-            c.setFirstName(rs.getString("first_name"));
-            c.setLastName(rs.getString("last_name"));
-            c.setEmail(rs.getString("email"));
-            c.setAddedDate(rs.getDate("added_date"));
-            c.setStatus(rs.getBoolean("status"));
-
+            s = new Student();
+            s.setId(rs.getInt("student_id"));
+            s.setFirstName(rs.getString("first_name"));
+            s.setLastName(rs.getString("last_name"));
+            s.setEmail(rs.getString("email"));
+            s.setContactNo(rs.getString("contact_no"));
+            s.setAddedDate(rs.getDate("added_date"));
+            s.setStatus(rs.getBoolean("status"));
         }
         db.close();
-        return c;
+        return s;
     }
 
 }

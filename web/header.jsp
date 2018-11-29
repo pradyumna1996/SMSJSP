@@ -14,4 +14,22 @@
     </head>
     
     <body>
+        <nav class = "navbar navbar-default" role = "navigation">
+   
+   <div class = "navbar-header">
+      <a class = "navbar-brand" href = "${pageContext.request.contextPath}/#">Student Management System</a>
+   </div>
+   
+   <div>
+      <ul class = "nav navbar-nav">
+          <li><a href = "${pageContext.request.contextPath}/admin/student/index.jsp">Students</a></li>
+          <li><a href = "${pageContext.request.contextPath}/admin/course/index.jsp">Courses</a></li>
+          <li><a href = "${pageContext.request.contextPath}/admin/enrollment/index.jsp">Enrollments</a></li>
+          <li><a href = "${pageContext.request.contextPath}/admin/payment/index.jsp">Payments</a></li>
+          <li><a href = "${pageContext.request.contextPath}/logout.jsp">Logout</a></li>
+      </ul>
+   </div>
+   
+</nav>
         <div class="container">
+            

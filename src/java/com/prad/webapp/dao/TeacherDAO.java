@@ -5,12 +5,12 @@
  */
 package com.prad.webapp.dao;
 
-import com.prad.webapp.entity.Payment;
+import com.prad.webapp.entity.Teacher;
 
 /**
  *
  * @author conne
  */
-public interface PaymenDAO extends GenericDAO<Payment> {
+public interface TeacherDAO extends GenericDAO<Teacher> {
     
 }

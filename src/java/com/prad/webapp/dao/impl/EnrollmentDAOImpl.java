@@ -74,13 +74,11 @@ public class EnrollmentDAOImpl implements EnrollmentDAO {
             Student s = new Student();
             s.setId(rs.getInt("student_id"));
             e.setStudent(s);
-            
             e.setEnrollDate(rs.getDate("enroll_date"));
             e.setFees(rs.getInt("fees"));
             e.setDiscount(rs.getInt("discount"));
             e.setStatus(rs.getString("status"));
             enrollmentList.add(e);
-
         }
         db.close();
         return enrollmentList;
@@ -105,7 +103,7 @@ public class EnrollmentDAOImpl implements EnrollmentDAO {
             e.setStudent(s); 
             e.setFees(rs.getInt("fees"));
             e.setEnrollDate(rs.getDate("enroll_date"));
-            e.setFees(rs.getInt("fees"));
+            e.setDiscount(rs.getInt("discount"));
             e.setStatus(rs.getString("status"));
 
         }
