@@ -20,6 +20,6 @@
     studentDAO.update(student);    }
     response.sendRedirect("index.jsp");
     } else{
-    out.println("<h1> Baatho Hunchhas Jaatha  !! </h1>" );
+    out.println("<h1> Saving directly causes Error !! </h1>" );
     }
 %>

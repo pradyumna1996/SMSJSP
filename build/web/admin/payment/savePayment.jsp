@@ -25,6 +25,6 @@ response.sendRedirect("../../index.jsp");
         }
         response.sendRedirect("index.jsp");
     } else {
-        out.println("<h1> Baatho Hunchhas Jaatha  !! </h1>");
+        out.println("<h1> Saving Directly Prohibhited !! </h1>");
     }
 %>

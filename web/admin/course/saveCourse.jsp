@@ -17,6 +17,6 @@
     courseDAO.update(course);    }
     response.sendRedirect("index.jsp");
     } else{
-    out.println("<h1> Baatho Hunchhas Jaatha  !! </h1>" );
+    out.println("<h1> Error saving directly. </h1>" );
     }
 %>
