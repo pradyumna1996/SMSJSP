@@ -1,11 +1,25 @@
 # SMSJSP
 
-Created while I was  in Internship programme. 
+----Created while I was  in Internship program. 
 
-Core Java and JSP along with My SQL is used. 
+Technology Used: 
+1. Java 
+2. JSP
+3. Bootstrap
+4. MySQL
 
 
-1. Download SQL file first and import tables;
+****************Important ************** 
+
+Download SQL file first and import tables;
+
+***********************************************
+
+
+******************************************
+Can be used by anyone. Open For All 
+****************************************
+
 
 Features:
 1. Register User
