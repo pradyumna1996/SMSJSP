@@ -3,10 +3,11 @@
 ----Created while I was  in Internship program. 
 
 Technology Used: 
-1. Java 
-2. JSP
-3. Bootstrap
-4. MySQL
+1. IDE : Netbeans 
+2. Programming Language: Java 
+2. Technology: JSP
+3. FrontEnd : Bootstrap
+4. Database : MySQL
 
 
 ****************Important ************** 
